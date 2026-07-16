@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.printxpress.android.R;
 import com.printxpress.android.data.model.User;
+import com.printxpress.android.ui.product.ProductListActivity;
 import com.printxpress.android.viewmodel.AuthViewModel;
 
 public class LoginActivity extends AppCompatActivity {
@@ -83,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             if (response == null) return;
             if (response.isSuccess()) {
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_SHORT).show();
-                finish();
+                navigateToMainApp();
             } else {
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -93,11 +94,18 @@ public class LoginActivity extends AppCompatActivity {
             if (response == null) return;
             if (response.isSuccess()) {
                 Toast.makeText(this, "Profile saved", Toast.LENGTH_SHORT).show();
-                finish();
+                navigateToMainApp();
             } else {
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void navigateToMainApp() {
+        Intent intent = new Intent(this, ProductListActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void signInWithGoogle() {

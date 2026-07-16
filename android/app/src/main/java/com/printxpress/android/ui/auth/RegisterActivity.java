@@ -48,11 +48,18 @@ public class RegisterActivity extends AppCompatActivity {
             if (response == null) return;
             if (response.isSuccess()) {
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_SHORT).show();
-                finish();
+                navigateToMainApp();
             } else {
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void navigateToMainApp() {
+        Intent intent = new Intent(this, com.printxpress.android.ui.product.ProductListActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void attemptRegister() {
