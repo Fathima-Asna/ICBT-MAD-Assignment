@@ -20,3 +20,12 @@ android/app/google-services.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Release signing keystore - never commit
+android/app/*.keystore
+android/app/*.jks
+android/app/release-keystore.properties
+android/app/printxpress-release*
+
+# Built APKs
+*.apk
