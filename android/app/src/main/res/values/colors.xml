@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Dark theme surface colors -->
+    <color name="background_dark">#FF121212</color>
+    <color name="surface_dark">#FF1E1E1E</color>
+    <color name="surface_variant_dark">#FF2C2C2C</color>
+
+    <!-- Primary: Cyan -->
+    <color name="cyan_400">#FF00BCD4</color>
+    <color name="cyan_600">#FF0097A7</color>
+    <color name="cyan_200">#FF80DEEA</color>
+
+    <!-- Secondary: Vibrant Orange -->
+    <color name="orange_500">#FFFF6D00</color>
+    <color name="orange_700">#FFE65100</color>
+
+    <!-- Accent: Pink/Magenta -->
+    <color name="pink_400">#FFFF4081</color>
+    <color name="pink_600">#FFD81B60</color>
+
+    <!-- Text -->
+    <color name="text_primary_dark">#FFFFFFFF</color>
+    <color name="text_secondary_dark">#FFB3B3B3</color>
+    <color name="text_hint_dark">#FF808080</color>
+
+    <!-- Status / Error -->
+    <color name="error">#FFCF6679</color>
+    <color name="success">#FF66BB6A</color>
+
+    <!-- Legacy aliases kept for compatibility -->
+    <color name="purple_500">@color/cyan_400</color>
+    <color name="purple_700">@color/cyan_600</color>
+    <color name="teal_200">@color/cyan_200</color>
+</resources>
