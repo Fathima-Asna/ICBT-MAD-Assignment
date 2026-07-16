@@ -29,3 +29,4 @@ android/app/printxpress-release*
 
 # Built APKs
 *.apk
+*.apk.idsig

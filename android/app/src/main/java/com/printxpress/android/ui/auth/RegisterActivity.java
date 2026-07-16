@@ -47,19 +47,21 @@ public class RegisterActivity extends AppCompatActivity {
         authViewModel.getAuthResult().observe(this, response -> {
             if (response == null) return;
             if (response.isSuccess()) {
-                Toast.makeText(this, response.getMessage(), Toast.LENGTH_SHORT).show();
-                navigateToMainApp();
+                Toast.makeText(this, "Registration successful! Welcome.", Toast.LENGTH_LONG).show();
+                navigateToMainAppAfterDelay();
             } else {
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    private void navigateToMainApp() {
-        Intent intent = new Intent(this, com.printxpress.android.ui.product.ProductListActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
+    private void navigateToMainAppAfterDelay() {
+        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+            Intent intent = new Intent(this, com.printxpress.android.ui.product.ProductListActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        }, 1500);
     }
 
     private void attemptRegister() {
