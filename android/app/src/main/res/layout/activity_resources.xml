@@ -3,40 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/background_dark">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="8dp">
+        android:text="Support &amp; Guidelines"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="PrintXpress"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnMenu"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Menu"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/cyan_400" />
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Browse helpful articles, design requirements, and customer support channels."
+        android:textColor="@color/text_secondary_dark"
+        android:textSize="14sp"
+        android:layout_marginBottom="16dp" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="12dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,72 +35,61 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnCatAll"
+                android:id="@+id/btnResAll"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="All"
+                android:text="All Articles"
                 android:layout_marginEnd="8dp"
                 android:textColor="@color/black"
                 android:backgroundTint="@color/cyan_400" />
 
             <Button
-                android:id="@+id/btnCatCards"
+                android:id="@+id/btnResFaq"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Business Cards"
+                android:text="FAQs"
                 android:layout_marginEnd="8dp"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/surface_variant_dark" />
 
             <Button
-                android:id="@+id/btnCatFlyers"
+                android:id="@+id/btnResGuides"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Flyers"
+                android:text="Print Guidelines"
                 android:layout_marginEnd="8dp"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/surface_variant_dark" />
 
             <Button
-                android:id="@+id/btnCatPosters"
+                android:id="@+id/btnResSupport"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Posters"
-                android:layout_marginEnd="8dp"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/surface_variant_dark" />
-
-            <Button
-                android:id="@+id/btnCatBanners"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Banners"
+                android:text="Support Info"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/surface_variant_dark" />
 
         </LinearLayout>
     </HorizontalScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProducts"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="8dp" />
-
     <TextView
-        android:id="@+id/tvEmptyState"
+        android:id="@+id/tvEmptyResources"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="No products found."
+        android:layout_marginTop="32dp"
+        android:text="No articles found."
+        android:textColor="@color/text_secondary_dark"
         android:textSize="16sp"
         android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvResources"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

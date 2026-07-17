@@ -32,6 +32,18 @@
         <activity android:name=".ui.order.OrderSummaryActivity" />
         <activity android:name=".ui.order.OrderHistoryActivity" />
 
+        <activity android:name=".ui.profile.ProfileActivity" />
+        <activity android:name=".ui.design.SavedDesignsActivity" />
+        <activity android:name=".ui.gallery.SampleGalleryActivity" />
+        <activity android:name=".ui.resources.ResourcesActivity" />
+        <activity android:name=".ui.notification.NotificationsActivity" />
+        <activity android:name=".ui.admin.AdminDashboardActivity" />
+        <activity android:name=".ui.admin.AdminOrdersActivity" />
+        <activity android:name=".ui.admin.AdminProductsActivity" />
+        <activity android:name=".ui.admin.AdminSamplesActivity" />
+        <activity android:name=".ui.admin.AdminPromotionsActivity" />
+        <activity android:name=".ui.admin.AdminFAQsActivity" />
+
     </application>
 
 </manifest>

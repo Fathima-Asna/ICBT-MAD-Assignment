@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background_dark"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin Management Panel"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manage system configurations, product listings, storefront contents, and order processing."
+        android:textColor="@color/text_secondary_dark"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <Button
+        android:id="@+id/btnManageOrders"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="📥 Process Order Queue"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/cyan_400"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnManageProducts"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="🛍️ Manage Product Catalog"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/surface_variant_dark"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnManageSamples"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="🖼️ Manage Featured Gallery"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/surface_variant_dark"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnManagePromos"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="🎟️ Configure Promotions"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/surface_variant_dark"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnManageFAQs"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="📝 Manage FAQs &amp; Help Resources"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/surface_variant_dark" />
+
+</LinearLayout>

@@ -57,6 +57,12 @@ public class ProductDetailActivity extends AppCompatActivity {
             intent.putExtra("product_id", currentProduct.getId());
             intent.putExtra("product_name", currentProduct.getName());
             intent.putExtra("product_price", currentProduct.getBasePrice());
+            
+            String custom = getIntent().getStringExtra("prefill_custom_text");
+            String url = getIntent().getStringExtra("prefill_design_url");
+            if (custom != null) intent.putExtra("prefill_custom_text", custom);
+            if (url != null) intent.putExtra("prefill_design_url", url);
+            
             startActivity(intent);
         });
     }

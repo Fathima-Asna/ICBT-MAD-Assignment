@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginVertical="8dp"
+    android:padding="16dp"
+    android:background="@color/surface_dark"
+    android:elevation="2dp">
+
+    <TextView
+        android:id="@+id/tvAdminOrderName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvAdminOrderStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/cyan_200"
+        android:textSize="14sp"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:id="@+id/tvAdminOrderSpecs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_secondary_dark"
+        android:textSize="13sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvAdminOrderDelivery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_secondary_dark"
+        android:textSize="13sp"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:id="@+id/tvAdminOrderTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="6dp" />
+
+    <Button
+        android:id="@+id/btnUpdateOrderStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Status"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/cyan_400"
+        android:layout_marginTop="12dp" />
+
+</LinearLayout>

@@ -34,7 +34,92 @@
         android:layout_marginTop="16dp"
         android:hint="Quantity"
         android:inputType="number"
-        android:text="1" />
+        android:text="1"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/cyan_400" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Paper Type / Material"
+        android:textColor="@color/text_secondary_dark"
+        android:textSize="14sp"
+        android:layout_marginTop="12dp" />
+
+    <Spinner
+        android:id="@+id/spPaperType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Size"
+        android:textColor="@color/text_secondary_dark"
+        android:textSize="14sp"
+        android:layout_marginTop="12dp" />
+
+    <Spinner
+        android:id="@+id/spSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/white" />
+
+    <EditText
+        android:id="@+id/etCustomText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Enter Custom Text (Optional)"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/cyan_400" />
+
+    <EditText
+        android:id="@+id/etDesignUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Enter Artwork File / Design URL"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/cyan_400" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Delivery Method"
+        android:textColor="@color/text_secondary_dark"
+        android:textSize="14sp"
+        android:layout_marginTop="12dp" />
+
+    <Spinner
+        android:id="@+id/spDelivery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/white" />
+
+    <EditText
+        android:id="@+id/etPickupTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Pickup Date/Time (e.g., Mon 10:00 AM)"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/cyan_400"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnSaveDesign"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Save Design to Profile"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/surface_variant_dark" />
 
     <TextView
         android:id="@+id/tvTotal"
@@ -42,13 +127,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnPlaceOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Place Order" />
+        android:layout_marginTop="16dp"
+        android:text="Place Order"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/cyan_400" />
 
 </LinearLayout>

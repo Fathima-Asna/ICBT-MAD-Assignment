@@ -8,6 +8,11 @@ public class CreateOrderRequest {
     private String type;
     private String deliveryId;
     private List<OrderItemRequest> items;
+    private String paperType;
+    private String size;
+    private String customText;
+    private String designUrl;
+    private String pickupTime;
 
     public CreateOrderRequest() {
     }
@@ -50,5 +55,45 @@ public class CreateOrderRequest {
 
     public void setItems(List<OrderItemRequest> items) {
         this.items = items;
+    }
+
+    public String getPaperType() {
+        return paperType;
+    }
+
+    public void setPaperType(String paperType) {
+        this.paperType = paperType;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getCustomText() {
+        return customText;
+    }
+
+    public void setCustomText(String customText) {
+        this.customText = customText;
+    }
+
+    public String getDesignUrl() {
+        return designUrl;
+    }
+
+    public void setDesignUrl(String designUrl) {
+        this.designUrl = designUrl;
+    }
+
+    public String getPickupTime() {
+        return pickupTime;
+    }
+
+    public void setPickupTime(String pickupTime) {
+        this.pickupTime = pickupTime;
     }
 }

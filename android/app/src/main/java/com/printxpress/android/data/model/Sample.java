@@ -9,6 +9,10 @@ public class Sample {
     private String userId;
     private String adminId;
     private List<String> productIds;
+    private String category;
+    private String bleedMargins;
+    private String colorFormats;
+    private String templateUrl;
 
     public Sample() {
     }
@@ -59,5 +63,37 @@ public class Sample {
 
     public void setProductIds(List<String> productIds) {
         this.productIds = productIds;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getBleedMargins() {
+        return bleedMargins;
+    }
+
+    public void setBleedMargins(String bleedMargins) {
+        this.bleedMargins = bleedMargins;
+    }
+
+    public String getColorFormats() {
+        return colorFormats;
+    }
+
+    public void setColorFormats(String colorFormats) {
+        this.colorFormats = colorFormats;
+    }
+
+    public String getTemplateUrl() {
+        return templateUrl;
+    }
+
+    public void setTemplateUrl(String templateUrl) {
+        this.templateUrl = templateUrl;
     }
 }

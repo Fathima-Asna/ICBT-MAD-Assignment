@@ -79,6 +79,11 @@ public class OrderRepository {
         order.setStatus("PENDING");
         order.setTotalAmount(total);
         order.setOrderItems(items);
+        order.setPaperType(request.getPaperType());
+        order.setSize(request.getSize());
+        order.setCustomText(request.getCustomText());
+        order.setDesignUrl(request.getDesignUrl());
+        order.setPickupTime(request.getPickupTime());
 
         dataApi.createOrder(order).enqueue(new Callback<List<PrintOrder>>() {
             @Override
