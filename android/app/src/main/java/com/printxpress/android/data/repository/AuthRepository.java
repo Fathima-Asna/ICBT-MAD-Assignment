@@ -187,13 +187,17 @@ public class AuthRepository {
     private <T> String resolveError(Response<T> response, String fallback) {
         if (response.errorBody() != null) {
             try {
-                SupabaseErrorResponse error = gson.fromJson(response.errorBody().string(), SupabaseErrorResponse.class);
+                String raw = response.errorBody().string();
+                SupabaseErrorResponse error = gson.fromJson(raw, SupabaseErrorResponse.class);
                 if (error != null && error.resolveMessage() != null) {
                     return error.resolveMessage();
+                }
+                if (raw != null && !raw.isBlank()) {
+                    return fallback + " (" + raw + ")";
                 }
             } catch (Exception ignored) {
             }
         }
-        return fallback;
+        return fallback + " (HTTP " + response.code() + ")";
     }
 }
