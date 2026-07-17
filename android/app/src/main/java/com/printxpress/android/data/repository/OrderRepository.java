@@ -50,6 +50,10 @@ public class OrderRepository {
                     return;
                 }
                 Product product = response.body().get(0);
+                if (product.getBasePrice() == null) {
+                    result.setValue(ApiResponse.error("Product is missing a price: " + req.getProductId()));
+                    return;
+                }
                 double price = product.getBasePrice() * req.getQuantity();
                 OrderItem item = new OrderItem();
                 item.setProductId(product.getId());

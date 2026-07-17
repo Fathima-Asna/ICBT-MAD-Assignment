@@ -37,7 +37,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 currentProduct = response.getData();
                 tvName.setText(currentProduct.getName());
                 tvCategory.setText(currentProduct.getCategory());
-                tvPrice.setText(String.format("$%.2f", currentProduct.getBasePrice()));
+                tvPrice.setText(String.format("$%.2f", currentProduct.getBasePrice() != null ? currentProduct.getBasePrice() : 0.0));
                 tvDescription.setText(currentProduct.getSpecs());
             } else {
                 Toast.makeText(this, response.getMessage() != null ? response.getMessage() : "Failed to load product", Toast.LENGTH_LONG).show();
@@ -56,7 +56,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             Intent intent = new Intent(this, OrderSummaryActivity.class);
             intent.putExtra("product_id", currentProduct.getId());
             intent.putExtra("product_name", currentProduct.getName());
-            intent.putExtra("product_price", currentProduct.getBasePrice());
+            intent.putExtra("product_price", currentProduct.getBasePrice() != null ? currentProduct.getBasePrice() : 0.0);
             
             String custom = getIntent().getStringExtra("prefill_custom_text");
             String url = getIntent().getStringExtra("prefill_design_url");
