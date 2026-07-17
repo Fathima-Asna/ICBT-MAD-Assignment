@@ -7,16 +7,6 @@ android/*.log
 *.iml
 .idea/
 
-# Backend / Gradle
-backend/build/
-backend/.gradle/
-
-# Firebase / secrets - never commit service account keys or google-services.json
-**/serviceAccountKey.json
-**/*firebase-adminsdk*.json
-backend/secrets/
-android/app/google-services.json
-
 # OS
 .DS_Store
 Thumbs.db
@@ -30,3 +20,6 @@ android/app/printxpress-release*
 # Built APKs
 *.apk
 *.apk.idsig
+
+# Helper scripts
+android/make_icons.ps1

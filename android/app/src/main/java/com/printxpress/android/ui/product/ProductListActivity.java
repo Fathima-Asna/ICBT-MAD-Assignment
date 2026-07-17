@@ -37,12 +37,12 @@ public class ProductListActivity extends AppCompatActivity implements ProductAda
             if (response == null) return;
             if (response.isSuccess() && response.getData() != null) {
                 adapter.setProducts(response.getData());
-                setEmptyState(response.getData().isEmpty(), "No products found.\nMake sure the backend is running and products are seeded.");
+                setEmptyState(response.getData().isEmpty(), "No products found.\nMake sure products have been added in Supabase.");
                 if (response.getData().isEmpty()) {
                     Toast.makeText(this, "No products available", Toast.LENGTH_LONG).show();
                 }
             } else {
-                setEmptyState(true, "Failed to load products.\nCheck backend connection.");
+                setEmptyState(true, "Failed to load products.\nCheck your internet connection.");
                 Toast.makeText(this, response.getMessage() != null ? response.getMessage() : "Failed to load products", Toast.LENGTH_LONG).show();
             }
         });

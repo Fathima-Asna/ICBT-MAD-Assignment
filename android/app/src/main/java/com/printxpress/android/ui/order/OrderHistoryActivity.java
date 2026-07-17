@@ -10,10 +10,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.printxpress.android.R;
+import com.printxpress.android.data.model.AuthUser;
 import com.printxpress.android.ui.auth.LoginActivity;
+import com.printxpress.android.util.SessionManager;
 import com.printxpress.android.viewmodel.OrderViewModel;
 
 import android.content.Intent;
@@ -35,7 +35,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
         adapter = new OrderAdapter();
         rvOrders.setAdapter(adapter);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        AuthUser user = SessionManager.getInstance().getCurrentUser();
         if (user == null) {
             Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, LoginActivity.class));

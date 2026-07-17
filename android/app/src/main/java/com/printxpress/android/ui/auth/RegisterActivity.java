@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.printxpress.android.R;
 import com.printxpress.android.data.model.User;
+import com.printxpress.android.data.repository.AuthRepository;
 import com.printxpress.android.util.ValidationUtils;
 import com.printxpress.android.viewmodel.AuthViewModel;
 
@@ -49,6 +50,10 @@ public class RegisterActivity extends AppCompatActivity {
             if (response.isSuccess()) {
                 Toast.makeText(this, "Registration successful! Welcome.", Toast.LENGTH_LONG).show();
                 navigateToMainAppAfterDelay();
+            } else if (AuthRepository.EMAIL_CONFIRMATION_REQUIRED.equals(response.getMessage())) {
+                Toast.makeText(this, response.getMessage(), Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
             } else {
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_LONG).show();
             }

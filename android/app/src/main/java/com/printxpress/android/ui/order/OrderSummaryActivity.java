@@ -9,11 +9,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.printxpress.android.R;
+import com.printxpress.android.data.model.AuthUser;
 import com.printxpress.android.data.model.CreateOrderRequest;
 import com.printxpress.android.data.model.OrderItemRequest;
+import com.printxpress.android.util.SessionManager;
 import com.printxpress.android.viewmodel.OrderViewModel;
 
 import java.util.Collections;
@@ -77,7 +77,7 @@ public class OrderSummaryActivity extends AppCompatActivity {
     }
 
     private void placeOrder() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        AuthUser user = SessionManager.getInstance().getCurrentUser();
         if (user == null) {
             Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show();
             return;

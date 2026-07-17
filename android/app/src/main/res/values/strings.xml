@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PrintXpress</string>
+
+    <!-- Google Cloud OAuth 2.0 Web Client ID, used by GoogleSignInOptions.requestIdToken().
+         Create one at console.cloud.google.com and add the same Client ID as an
+         authorized client in Supabase's Authentication -> Providers -> Google settings. -->
+    <string name="default_web_client_id" translatable="false">552691536919-h68dqca9vb0mc8k9i0cq2qgi00fh9bkn.apps.googleusercontent.com</string>
 </resources>

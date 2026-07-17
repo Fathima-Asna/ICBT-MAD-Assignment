@@ -5,9 +5,11 @@
 
 # Keep model classes used by Gson / Retrofit
 -keep class com.printxpress.android.data.model.** { *; }
+-keep class com.printxpress.android.data.remote.dto.** { *; }
 
 # Keep Retrofit API interfaces
--keep interface com.printxpress.android.data.remote.ApiService { *; }
+-keep interface com.printxpress.android.data.remote.SupabaseAuthApi { *; }
+-keep interface com.printxpress.android.data.remote.SupabaseDataApi { *; }
 
 # Keep all Activities, ViewModels, and Application classes
 -keep public class * extends android.app.Activity
@@ -15,10 +17,8 @@
 -keep public class * extends androidx.lifecycle.ViewModel
 -keep public class * extends android.app.Application
 
-# Keep Firebase and Google Play Services classes
--keep class com.google.firebase.** { *; }
+# Keep Google Play Services classes (Google Sign-In)
 -keep class com.google.android.gms.** { *; }
--dontwarn com.google.firebase.**
 -dontwarn com.google.android.gms.**
 
 # Retrofit

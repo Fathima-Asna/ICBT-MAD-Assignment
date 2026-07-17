@@ -17,11 +17,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.printxpress.android.R;
+import com.printxpress.android.data.model.AuthUser;
 import com.printxpress.android.data.model.User;
 import com.printxpress.android.ui.product.ProductListActivity;
 import com.printxpress.android.viewmodel.AuthViewModel;
@@ -33,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin, btnGoogleSignIn;
     private TextView tvForgot, tvGoToRegister;
     private GoogleSignInClient googleSignInClient;
-    private FirebaseAuth firebaseAuth;
 
     private final ActivityResultLauncher<Intent> googleSignInLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -43,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
                         GoogleSignInAccount account = GoogleSignIn.getSignedInAccountFromIntent(result.getData())
                                 .getResult(ApiException.class);
                         if (account != null && account.getIdToken() != null) {
-                            firebaseAuthWithGoogle(account.getIdToken(), account);
+                            authViewModel.signInWithGoogle(account.getIdToken());
                         } else {
                             Toast.makeText(this, "Google sign-in failed", Toast.LENGTH_SHORT).show();
                         }
@@ -59,7 +55,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        firebaseAuth = FirebaseAuth.getInstance();
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -99,6 +94,26 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+
+        authViewModel.getGoogleAuthResult().observe(this, response -> {
+            if (response == null) return;
+            if (response.isSuccess() && response.getData() != null) {
+                AuthUser authUser = response.getData();
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+                User user = new User();
+                user.setId(authUser.getUid());
+                user.setEmail(authUser.getEmail());
+                if (account != null) {
+                    user.setName(account.getDisplayName());
+                    if (account.getPhotoUrl() != null) {
+                        user.setProfile(account.getPhotoUrl().toString());
+                    }
+                }
+                authViewModel.createUserProfile(user);
+            } else {
+                Toast.makeText(this, response.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void navigateToMainApp() {
@@ -115,33 +130,14 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void firebaseAuthWithGoogle(String idToken, GoogleSignInAccount account) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-        firebaseAuth.signInWithCredential(credential)
-                .addOnSuccessListener(authResult -> {
-                    FirebaseUser firebaseUser = authResult.getUser();
-                    if (firebaseUser != null) {
-                        User user = new User();
-                        user.setId(firebaseUser.getUid());
-                        user.setEmail(firebaseUser.getEmail());
-                        user.setName(firebaseUser.getDisplayName());
-                        if (account.getPhotoUrl() != null) {
-                            user.setProfile(account.getPhotoUrl().toString());
-                        }
-                        authViewModel.createUserProfile(user);
-                    }
-                })
-                .addOnFailureListener(e -> Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show());
-    }
-
     private String getGoogleSignInErrorMessage(int statusCode) {
         switch (statusCode) {
             case com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes.SIGN_IN_CANCELLED:
                 return "Google sign-in cancelled";
             case com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes.SIGN_IN_FAILED:
-                return "Google sign-in failed. Add SHA-1 in Firebase Console and re-download google-services.json.";
+                return "Google sign-in failed. Check the app's SHA-1 is registered on the Google Cloud OAuth client.";
             case com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes.DEVELOPER_ERROR:
-                return "Google Sign-In config error. Check SHA-1 and google-services.json.";
+                return "Google Sign-In config error. Check default_web_client_id and the SHA-1 fingerprint.";
             default:
                 return "Google sign-in failed (code " + statusCode + ")";
         }

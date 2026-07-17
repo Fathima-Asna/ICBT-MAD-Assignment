@@ -3,15 +3,16 @@ package com.printxpress.android.viewmodel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.firebase.auth.FirebaseUser;
 import com.printxpress.android.data.model.ApiResponse;
+import com.printxpress.android.data.model.AuthUser;
 import com.printxpress.android.data.model.User;
 import com.printxpress.android.data.repository.AuthRepository;
 
 public class AuthViewModel extends ViewModel {
 
     private final AuthRepository authRepository;
-    private final MutableLiveData<ApiResponse<FirebaseUser>> authResult = new MutableLiveData<>();
+    private final MutableLiveData<ApiResponse<AuthUser>> authResult = new MutableLiveData<>();
+    private final MutableLiveData<ApiResponse<AuthUser>> googleAuthResult = new MutableLiveData<>();
     private final MutableLiveData<ApiResponse<Void>> resetResult = new MutableLiveData<>();
     private final MutableLiveData<ApiResponse<User>> profileResult = new MutableLiveData<>();
 
@@ -19,8 +20,12 @@ public class AuthViewModel extends ViewModel {
         this.authRepository = new AuthRepository();
     }
 
-    public MutableLiveData<ApiResponse<FirebaseUser>> getAuthResult() {
+    public MutableLiveData<ApiResponse<AuthUser>> getAuthResult() {
         return authResult;
+    }
+
+    public MutableLiveData<ApiResponse<AuthUser>> getGoogleAuthResult() {
+        return googleAuthResult;
     }
 
     public MutableLiveData<ApiResponse<Void>> getResetResult() {
@@ -49,6 +54,10 @@ public class AuthViewModel extends ViewModel {
 
     public void register(User user, String password) {
         authRepository.register(user, password, authResult);
+    }
+
+    public void signInWithGoogle(String idToken) {
+        authRepository.signInWithGoogleIdToken(idToken, googleAuthResult);
     }
 
     public void sendPasswordReset(String email) {

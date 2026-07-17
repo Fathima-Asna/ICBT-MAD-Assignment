@@ -6,11 +6,10 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.printxpress.android.ui.auth.LoginActivity;
 import com.printxpress.android.ui.order.OrderHistoryActivity;
 import com.printxpress.android.ui.product.ProductListActivity;
+import com.printxpress.android.util.SessionManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,8 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser != null) {
+        if (SessionManager.getInstance().isLoggedIn()) {
             startActivity(new Intent(this, ProductListActivity.class));
             finish();
             return;
