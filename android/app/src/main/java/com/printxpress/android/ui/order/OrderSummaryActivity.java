@@ -25,7 +25,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import com.printxpress.android.data.model.SavedDesign;
 import com.printxpress.android.data.remote.SupabaseClient;
-import java.util.Collections;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
