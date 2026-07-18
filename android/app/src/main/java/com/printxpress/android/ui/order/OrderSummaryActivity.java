@@ -48,6 +48,7 @@ public class OrderSummaryActivity extends AppCompatActivity {
 
         tvProductName = findViewById(R.id.tvProductName);
         tvUnitPrice = findViewById(R.id.tvUnitPrice);
+        tvTotal = findViewById(R.id.tvTotal);
         etQuantity = findViewById(R.id.etQuantity);
         etCustomText = findViewById(R.id.etCustomText);
         etDesignUrl = findViewById(R.id.etDesignUrl);

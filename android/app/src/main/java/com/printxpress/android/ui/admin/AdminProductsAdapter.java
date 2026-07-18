@@ -49,7 +49,7 @@ public class AdminProductsAdapter extends RecyclerView.Adapter<AdminProductsAdap
         Product product = products.get(position);
         holder.tvName.setText(product.getName());
         holder.tvCategory.setText(product.getCategory());
-        holder.tvPrice.setText(String.format("$%.2f", product.getBasePrice()));
+        holder.tvPrice.setText(String.format("$%.2f", product.getBasePrice() != null ? product.getBasePrice() : 0.0));
         
         holder.btnEdit.setOnClickListener(v -> listener.onEditClick(product));
         holder.btnDelete.setOnClickListener(v -> listener.onDeleteClick(product));

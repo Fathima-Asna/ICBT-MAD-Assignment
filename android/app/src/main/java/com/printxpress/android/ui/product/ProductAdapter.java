@@ -47,7 +47,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Product product = products.get(position);
         holder.tvName.setText(product.getName());
         holder.tvCategory.setText(product.getCategory());
-        holder.tvPrice.setText(String.format("$%.2f", product.getBasePrice()));
+        holder.tvPrice.setText(String.format("$%.2f", product.getBasePrice() != null ? product.getBasePrice() : 0.0));
         holder.itemView.setOnClickListener(v -> listener.onProductClick(product));
     }
 
